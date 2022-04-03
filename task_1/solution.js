@@ -1,6 +1,22 @@
 function addInCartMessage(title, price) {
     let productName = title;
     let productPrice = price;
+    let message = productName;
+
+    message = productName;
+    message = message + ' ';
+    message = message + 'за';
+    message = message + ' ';
+    message = message + price;
+    message = message + ' ';
+    message = message + 'теперь в корзине!';
+
+
+    //либо, как альтернативный вариант
+    //message = productName + ' ' + 'за' + ' ' + price + ' ' + 'теперь в корзине!';
+
+
+
 
     // Задание №1.1. Оповещение о добавлении в корзину
 
@@ -23,6 +39,9 @@ function addInCartCountChange(value) {
 
     // Задание №1.2. Увеличение количества в корзине
     let oldValue = value;
+    let newValue = oldValue;
+
+    newValue = oldValue + 1;
 
     // создайте переменную newValue
     // присвойте ей значение oldValue
@@ -36,6 +55,18 @@ function addInCartCountChange(value) {
 function addInCartSumChange(sum, delta) {
     let oldSum = sum;
     let difference = delta;
+    let newSum = oldSum + difference;
+    let newSumText = newSum + ' ₽';
+    
+    
+    //Задание № 1.3, шаг 3, мой комментарий:
+    //"Замените склеивание, используемое в newSum Text на шаблонную строку ("косые кавычки")"
+    //Непонятно, что нужно сделать. В комментариях преподаватель привел пример строки
+    //newSumText = `${newSum} ₽`;
+    //и она даже работает, но откуда брать косые кавычки и как они функционируют - непонятно.
+
+
+
 
     // Задание №1.3. Увеличение суммы в корзине
 
