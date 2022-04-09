@@ -3,6 +3,17 @@ function calcShipping(sum, min, shipping) {
     let freeShippingMinSum = min; // минимальная цена для бесплатной доставки
     let shippingPrice = shipping; // стоимость доставки
 
+    let shippingSum;
+
+    if (productsSum == 0){
+        shippingSum = 0;
+    }else if (productsSum >= freeShippingMinSum){
+        shippingSum = 0;
+    }else if (productsSum > 0 && productsSum < freeShippingMinSum){
+        shippingSum = shippingPrice;
+    }
+
+    
     // Задание №2.1. Рассчитать доставку
 
     // создайте переменную shippingSum
@@ -26,6 +37,15 @@ function calcDiscount(sum, min, discount) {
     let discountMinSum = min; // минимальная цена для скидки
     let discountPart = discount; // величина скидки в процентах
 
+    let discountSum;
+ 
+    if (productsSum >= discountMinSum){
+        discountSum = (discountPart/100*productsSum);
+    }else discountSum = 0;
+
+
+
+
     // Задание №2.2. Рассчитать скидку
 
     // создайте переменную discountSum
@@ -43,6 +63,11 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
     let productsSum = sum;
     let discountSum = calcDiscount(sum, discountMinSum, discountPart);
 
+    let totalSum;
+    totalSum = productsSum;
+    totalSum = totalSum - discountSum;
+
+
     // Задача №2.3. Рассчитать скидки и доставку в корзине
 
     // создайте переменную totalSum
@@ -51,6 +76,29 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
     // уменьшите totalSum на discountSum
 
     let shippingSum = calcShipping(totalSum, shippingFreeMinSum, shippingPrice); // не изменяйте эту строку!!!
+
+
+    totalSum = totalSum + shippingSum;
+    let freeShipping;
+    (shippingSum == 0) ? freeShipping = true : freeShipping = false;
+    
+
+    //freeShipping = !shippingSum;
+
+
+    //Комментарий студента:
+    // последний блок совершенно непонятно как выполлнять, то есть до момента (shippingSum == 0) я дошел,
+    // а дальше, откуда брать значения "?" и ":" и как они работают
+    // совершенно непонятно (ткните пальцем, если это есть в материалах лекции)
+    // ровно так же непонятно каким образом работяет связка "freeShipping = !shippingSum;"
+    // работу я сделал, но блок (shippingSum == 0) ? freeShipping = true : freeShipping = false;
+    // тупо подсмотрен в комментариях. 
+    // конец комментария.
+
+
+
+
+
 
     // прибавьте к totalSum значение shippingSum
 
