@@ -5,13 +5,24 @@ function calcShipping(sum, min, shipping) {
 
     let shippingSum;
 
-    if (productsSum == 0){
-        shippingSum = 0;
-    }else if (productsSum >= freeShippingMinSum){
-        shippingSum = 0;
-    }else if (productsSum > 0 && productsSum < freeShippingMinSum){
+    
+    //этот блок правильный, но заменен на другой по рекомендации преподавателя
+    //if (productsSum == 0){
+    //    shippingSum = 0;
+    //}else if (productsSum >= freeShippingMinSum){
+    //    shippingSum = 0;}
+
+
+    //это блок преподавателя
+    if (productsSum == 0 || productsSum >= freeShippingMinSum) {
+            shippingSum = 0;
+    } 
+    // мой блок
+    else if (productsSum > 0 && productsSum < freeShippingMinSum){
         shippingSum = shippingPrice;
     }
+
+    
 
     
     // Задание №2.1. Рассчитать доставку
@@ -37,11 +48,17 @@ function calcDiscount(sum, min, discount) {
     let discountMinSum = min; // минимальная цена для скидки
     let discountPart = discount; // величина скидки в процентах
 
-    let discountSum;
- 
-    if (productsSum >= discountMinSum){
-        discountSum = (discountPart/100*productsSum);
-    }else discountSum = 0;
+    // опять таки - это мой блок и он правильный
+    //let discountSum;
+     //if (productsSum >= discountMinSum){
+    //    discountSum = (discountPart/100*productsSum);
+    //}else discountSum = 0;
+
+
+    // но заменен на этот по рекоменлдации преподавателя (тут присутствуют тернарые операторы, 
+    // про которые на занятии ничего не рассказывали)
+    let discountSum = productsSum >= discountMinSum ? discountPart/100*productsSum : 0;
+
 
 
 
@@ -79,11 +96,18 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
 
 
     totalSum = totalSum + shippingSum;
-    let freeShipping;
-    (shippingSum == 0) ? freeShipping = true : freeShipping = false;
     
+    
+    // мой блок кода, и он работает
+    //let freeShipping;
+    //(shippingSum == 0) ? freeShipping = true : freeShipping = false;
+    
+    // блок кода который посоветовал использовать преподаватель
+    let freeShipping = shippingSum == 0;    //и как это работает абсолютно непонятно
 
-    //freeShipping = !shippingSum;
+    //freeShipping = !shippingSum;  //еще один вариант реализации без использования if\else
+
+    
 
 
     //Комментарий студента:
