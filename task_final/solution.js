@@ -61,3 +61,4 @@ function sendRequest(name, phone, address, goods, sum,) {
  
      return jsonData;
  }
+ 
